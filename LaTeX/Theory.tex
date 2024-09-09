@@ -1,0 +1,30 @@
+\subsection{Goal of Linear Regression}
+Regression is a statistical method that aims to determine the relationship between a set of inputs and their output.
+Linear Regression is a form of regression that assumes the relationship is a linear relationship of the form:
+\begin{equation}
+    y=\sum_{k=1}^{n} \beta_k x_k
+\end{equation}
+n is the number of independent input variables each of which is denoted by $x_i$. 
+$\beta$ is the $n\times1$ vector of coeffecients that we aim to determine. We will be given a matrix $X$ of inputs where for each row $i$ the entry $X_{ij}$ represents the value of $x_j$ in equation 1 for the $i$th input sample.
+\\ \\$X_{ij}$ will be an $m \times{} n$ matrix containg the sample input data where m is the number of inputs and n is as defined above. The output vector $Y$ for the matrix of inputs will be given by \begin{equation}
+    Y=X\beta+\epsilon
+\end{equation} $Y$ will be an m dimensional vector containg the m respective outputs for m inputs and $\epsilon$ is the noise added to simulate real life inputs. \\ \\
+One might think that the only issue with determining $Y$ is the noisy data but in reality another issue is that the matrix $X$ might be singular and overdetermines the solution. This is why we will use the least squares method to determine $\beta$.\\ \\
+The goal of linear regression will be to determine an approximate numerical value for $\beta$ such that we can compute $\hat{Y}=X\beta$ for any given x where the hat denotes an approximate value.\\ \\
+\subsection{Normal Equation Proof}
+We will use equation 2 to solve for $\beta$. Our goal will be to minimize the square difference between $\hat{Y}$ and $Y$. We will define the error as:$E_i=(\hat{Y_i}-Y_i)^2$ for each $i$th input and we will aim to minimize $E$.
+\begin{eqnarray}
+    E=\sum_{i=1}^{m} E_i \nonumber \\
+    E=\sum_{i=1}^{m} (\hat{Y_i}-Y_i)^2 \nonumber \\
+    E=\sum_{i=1}^{m} (X_i\beta-Y_i)^2 \nonumber \\
+    \frac{\partial{E}}{\partial{\beta}}=2(X_i\beta-Y_i)X_i=0 \nonumber \\
+    X_i\beta X_i=Y_iX_i \nonumber \\
+    X'X\beta=X'Y \nonumber \\
+    \beta={(X'X)}^{-1}X'Y
+\end{eqnarray}
+To arrive at the final formula we had to use the inverse of $X'X$ for which we used the following lemma to be certain that $X'X$ is invertible.
+\begin{lemma}
+    For a given full column rank matrix $X$ the matrix $A=X'X$ is always invertible\\
+    Refer to appendix for proof
+\end{lemma}
+We call the final equation The Normal Equation for linear Regression. \\

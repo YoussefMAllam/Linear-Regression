@@ -1,0 +1,15 @@
+\subsection{Proof of Lemma 2.1}
+For a given matrix$m\times n$ matrix $A$ with full column rank, we will prove that the matrix $A^TA$ is invertible.\\
+Full column rank would mean that the columns of $A$ are linearly independent and thus span the entire column space of $A$.\\
+This would further imply that the matrix equation $Ax=0$ has only the trivial solution $x=0$.\\
+We will now prove that $A^TA$ is invertible by proving that $A^TAx=0$ implies $x=0$.\\
+\begin{eqnarray}
+    A^TAx=0 \nonumber \\
+    x^TA^TAx=0 \nonumber \\
+    (Ax)^T(Ax)=0 \nonumber \\
+    ||Ax||^2=0 \nonumber \\
+    Ax=0 \nonumber \\
+    x=0
+\end{eqnarray}
+Since we showed that $A^TAx=0$ implies $x=0$, we can conclude that $A^TA$ is invertible since it's columns must be linearly independent it is a square n matrix.\\
+

@@ -1,0 +1,29 @@
+\subsection{Generating Input Data}
+Next we need to prepare data to test our program. 
+A function will be used to generate a matrix of sample inputs based on the desired sample size and the feature size. 
+Feature size is the count of independent elements.
+\begin{lstlisting}
+    def generate_in(sample_size, feature_size):
+        data=[[0]*feature_size for i in range(sample_size)]
+        for i in range(sample_size):
+            for j in range(feature_size):
+                data[i][j]=np.random.randint(100)
+        X=Matrix(data)
+        return X
+\end{lstlisting}
+\subsection{Generating Output Data}
+Another function will generate the output for the respective inputs genertaed above.
+The function will be passed the sample input as well as a coeffecient matrix. 
+Then noise will be added to the function to simulate real world conditions.
+
+\begin{lstlisting}
+    def generate_out(A,X):
+        Y=X*A
+        add_noise(Y,5)
+        return Y
+
+    def add_noise(A,max):
+        for i in range(A.m):
+            for j in range(A.n):
+                A.matrix[i][j]=A.matrix[i][j]+np.random.rand()*max
+\end{lstlisting}
